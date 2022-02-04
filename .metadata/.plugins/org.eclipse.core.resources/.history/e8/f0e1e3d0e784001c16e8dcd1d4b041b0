@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %>
+<%
+	String text = request.getParameter("text");
+	String result = text.replace("?", "!");
+	result = result.replace(".", "?");
+	result = result.replace("\n", "<br>");
+%>
+    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>번역 결과</h2>
+	<%= result %>
+</body>
+</html>
