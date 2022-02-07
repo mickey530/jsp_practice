@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;sungmo_getpost.jsp, sungmo_send.jsp&apos; to &apos;Laboratory&apos;" description="Move 2 resources to &apos;Laboratory&apos;" destination="src/main/webapp/Laboratory" element1="src/main/webapp/sungmo_getpost.jsp" element2="src/main/webapp/sungmo_send.jsp" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="2" stamp="1644130383264" updateReferences="true"/>
+</session>
