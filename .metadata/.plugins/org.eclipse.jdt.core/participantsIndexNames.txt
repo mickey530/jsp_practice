@@ -21,3 +21,5 @@ INDEX VERSION 1.131
 /JSPBasic/src/main/java
 /Users/mickey530/eclipse-workspace2/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/4161197152.index
 /JSPBasic/src/main/java
+/Users/mickey530/eclipse-workspace2/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/3697509620.index
+/JDBCPrj/src/main/java
