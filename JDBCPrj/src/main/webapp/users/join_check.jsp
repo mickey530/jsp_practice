@@ -42,18 +42,36 @@
 	} catch(Exception e){
 		e.printStackTrace();
 	} finally{
-		
 	// 4. out.println("회원가입이 완료되었습니다."); 띄워서 가입 완료 알리기
-		out.println("회원가입이 완료되었습니다.");
-	}
+	
 %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
 
-</body>
-</html>
+<!DOCTYPE html>
+				<html>
+				<head>
+				<meta charset="UTF-8">
+				<title>Insert title here</title>
+				<!-- 부트스트랩 링크 -->
+				<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+				<style>
+					html, body {
+					    height: 100%;
+					}
+					body {
+					    display: flex;
+					    align-items: center;
+					    justify-content: center;
+					    flex-direction: column;
+					    padding-top: 40px;
+					    padding-bottom: 40px;
+					    background-color: #f5f5f5;
+					}
+				</style>
+				</head>
+				<body class="text-center">
+					<h3><%= name %>(<%= id %>)님 로그인을 환영합니다.</h3>
+					<a href="login_logout.jsp" class="btn btn-outline-danger">로그아웃</a>
+				</body>
+				</html>
+<% } %>
+			

@@ -1,27 +1,76 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	// 세션에 이미 로그인 정보가 있는지 확인
+	String sessionId = (String)session.getAttribute("userId");
+	
+	// login_welcome.jsp 페이지로 리다이렉트
+	if(sessionId != null){
+		response.sendRedirect("login_welcome.jsp");
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <!-- 부트스트랩 링크 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<style>
+	html, body {
+	    height: 100%;
+	}
+	body {
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #f5f5f5;
+	}
+	.form-signin {
+	    width: 100%;
+	    max-width: 330px;
+	    padding: 15px;
+	    margin: auto;
+	}
+	
+	.form-signin input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+	}
+	.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+	}
+	.form-floating{height: 57px;}
+	.btn{font-size:1.25rem; margin-bottom: 10px;}
+</style>
 <title>로그인</title>
 </head>
-<body>
+<body class="text-center">
 	<!-- 아이디와 비밀번호를 적어넣을 수 있는 폼을 만들어주세요.
-	목적지는 login_check.jsp 입니다. -->
-	<header>
-		<h2>로그인 페이지</h2>
-	</header>
-	<div class="contanier">
+	목적지는 login_check.jsp 입니다. -->	
+	<main class="form-signin">
+		<image src="https://www.hermes.com/sites/all/themes/custom/hermes/img/hermes-logo.svg" class="h3 mb-3 fw-normal" width="50%">
 		<form action="login_check.jsp" method="post">
-			<input type="text" name="id" placeholder="아이디"><br/>
-			<input type="password" name="pw" placeholder="비밀번호"><br/>
-			<a href="join_form.jsp" class="btn btn-outline-primary">회원가입</a>
-			<input type="submit" value="로그인" class="btn btn-primary">
-		</form>
-	</div>
-	
+			<div class="form-floating" >
+				<input type="text" name="id" placeholder="아이디" class="form-control" id="floatingInput" >
+				<label for="floatingInput">아이디</label>
+			</div>
+			<div class="form-floating">
+				<input type="password" name="pw" placeholder="비밀번호" class="form-control" id="floatingPassword"><br/>
+				<label for="floatingPassword">비밀번호</label>					
+			</div>
+			<div class="checkbox mb-3" style="margin:16px;">
+		      <label>
+		        <input type="checkbox" name="remember" value="checked"> 자동로그인
+		      </label>
+   			</div>
+						
+			<input type="submit" value="로그인" class="w-100 btn btn-lg btn-primary"><br/>
+			<a href="join_form.jsp" class="w-100 btn btn-outline-secondary">회원가입</a>
+		</form>	
+	</main>
 </body>
 </html>

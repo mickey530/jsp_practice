@@ -3,31 +3,48 @@
 <%@ page import="java.sql.*"%>    
     
 <%
+	// form 데이터 변수에 저장
 	String inputId = request.getParameter("id");
 	String inputPw = request.getParameter("pw");
 	
-	System.out.println(inputId);
-	System.out.println(inputPw);
-	
 	// DB 연결을 위한 변수선언
+	String dbType = "com.mysql.cj.jdbc.Driver";
+	String dbUrl = "jdbc:mysql://localhost:3306/jdbcprac1";
+	String dbId = "root";
+	String dbPw = "11111111";
 	
 	try{
 		// 1. DB 종류 선택 및 연결
-		String dbType = "com.mysql.cj.jdbc.Driver";
-		String dbUrl = "jdbc:mysql://localhost:3306/jdbcprac1";
-		String dbId = "root";
-		String dbPw = "11111111";
+		Class.forName(dbType);
+		Connection con = DriverManager.getConnection(dbUrl, dbId, dbPw);
 		
-		
-		
-		
-		// 2. 쿼리문(사용자가 입력해준 fId 조회하기) 선언 및 PreparedStatement 객체 생성
+		// 2. 쿼리문(사용자가 입력해준 inputId 조회하기) 선언 및 PreparedStatement 객체 생성
+		String sql = "SELECT * FROM userinfo WHERE uid = ?";
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, inputId);
 		
 		// 3. 쿼리문 실행 결과 ResultSet에 받기
+		ResultSet rs = pstmt.executeQuery();
 		
-		// 4. 사용자 입력 id를 기준으로 들어온 데이터가 있다면, (.equals로 검사 가능)
-		//	  DB에 적재되어있었던 비밀번호를 마저 사용자 입력 비밀번호와 비교해 둘 다 일치하면 세션 발급
+		// 4. 사용자 입력 id를 기준으로 들어온 데이터가 있다면(rs.next()), 
+		//	  DB에 적재되어있었던 비밀번호를 마저 비교해(.equals로 검사 가능)
+		//	  사용자 입력 비밀번호와 일치하면 세션 발급.
 		//	  그렇지 않다면 로그인에 실패했습니다. 메세지가 뜨도록 처리
+		
+		if(rs.next()){
+			if(inputPw.equals(rs.getString("upw"))){
+				// 세션 발급 및 로그인 페이지로 이동
+				session.setAttribute("userId", inputId);
+				response.sendRedirect("login_welcome.jsp");				
+			} else{
+				// 로그인 실패 메세지
+				out.println("로그인에 실패했습니다.<br/>" +
+				"<a href='login_form.jsp'>로그인 페이지로 돌아가기</a><br/>");
+			};
+		}
+		// 닫아주기(페이지 넘어가면 자동으로 종료되는건가?)
+		con.close();
+		pstmt.close();
 		
 		// 5. 만약 웰컴페이지도 만들 여력이 되신다면
 		//	  가입 이후 리다이렉트로 넘겨서
@@ -37,6 +54,19 @@
 	} finally{
 		
 	}
+	
+	// 이거 있으면 login_form에서 넘어올때 에러남
+	/* // 세션에 이미 로그인 정보가 있는지 확인
+	String sessionId = (String)session.getAttribute("userId");
+	
+	// 로그인 정보가 있다면 login_welcome.jsp 페이지로 리다이렉트
+	if(sessionId != null){
+		response.sendRedirect("login_welcome.jsp");
+	} 
+	// 로그인 정보가 없다면 login_form.jsp로 리다이렉트
+	else {
+		response.sendRedirect("login_form.jsp");
+	} */
 %>
 <!DOCTYPE html>
 <html>
