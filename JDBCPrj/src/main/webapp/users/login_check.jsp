@@ -33,7 +33,9 @@
 		
 		if(rs.next()){
 			if(inputPw.equals(rs.getString("upw"))){
-				// 세션 발급 및 로그인 페이지로 이동
+				// 세션 발급 및 로그인 페이지로 이동 (아이디랑 이름을 발급받는게 좋음.)
+				// 수정/탈퇴의 경우 비밀번호를 한 번 더 입력하게 되는데 이때에는
+				// 세션에 저장해두는 편이 DB에서 가져오는 것 보다 훨씬 효율적임
 				session.setAttribute("userId", inputId);
 				response.sendRedirect("login_welcome.jsp");				
 			} else{

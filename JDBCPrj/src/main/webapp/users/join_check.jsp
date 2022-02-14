@@ -70,7 +70,7 @@
 				</head>
 				<body class="text-center">
 					<h3><%= name %>(<%= id %>)님 로그인을 환영합니다.</h3>
-					<a href="login_logout.jsp" class="btn btn-outline-danger">로그아웃</a>
+					<a href="login_form.jsp" class="btn btn-lg btn-primary">로그인 페이지로 이동</a>
 				</body>
 				</html>
 <% } %>

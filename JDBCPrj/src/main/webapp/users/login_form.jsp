@@ -44,6 +44,8 @@
     border-top-right-radius: 0;
 	}
 	.form-floating{height: 57px;}
+	
+	.form-check{text-align:left; margin:16px;}
 	.btn{font-size:1.25rem; margin-bottom: 10px;}
 </style>
 <title>로그인</title>
@@ -62,11 +64,26 @@
 				<input type="password" name="pw" placeholder="비밀번호" class="form-control" id="floatingPassword"><br/>
 				<label for="floatingPassword">비밀번호</label>					
 			</div>
-			<div class="checkbox mb-3" style="margin:16px;">
-		      <label>
-		        <input type="checkbox" name="remember" value="checked"> 자동로그인
-		      </label>
-   			</div>
+			
+   			<div class="form-check">
+			  <input class="form-check-input" type="checkbox" name="remember" value="checked" id="flexCheckDefault">
+			  <label class="form-check-label" for="flexCheckDefault">
+			    자동 로그인
+			  </label>
+			</div>
+   			
+   			
+   			
+   			<div class="form-check">
+			  <input class="form-check-input" type="checkbox" name="remember" value="checked" id="flexCheckDefault">
+			  <label class="form-check-label" for="flexCheckDefault">
+			    자동 로그인
+			  </label>
+			</div>
+   			
+   			
+   			
+   			
 						
 			<input type="submit" value="로그인" class="w-100 btn btn-lg btn-primary"><br/>
 			<a href="join_form.jsp" class="w-100 btn btn-outline-secondary">회원가입</a>

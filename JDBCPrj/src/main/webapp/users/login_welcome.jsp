@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>    
-    
-<%
 
-%>
 <%
 	/* 세션에 저장되어있는 아이디 가져오기 */
 	String sessionId = (String)session.getAttribute("userId");
@@ -66,7 +63,11 @@
 				</head>
 				<body class="text-center">
 					<h3><%= userName %>(<%= sessionId %>)님 로그인을 환영합니다.</h3>
-					<a href="login_logout.jsp" class="btn btn-outline-danger">로그아웃</a>
+					<div col>
+					<a href="logout.jsp" class="btn btn-outline-danger">로그아웃</a>
+					<a href="login_update.jsp" class="btn btn-outline-success">정보수정</a>
+					<a href="member_out.jsp" class="btn btn-outline-warning">회원탈퇴</a>
+					</div>
 				</body>
 				</html>
 			<%
