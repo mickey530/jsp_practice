@@ -70,6 +70,9 @@
 					<a href="login_update.jsp" class="btn btn-outline-success">정보수정</a>
 					<a href="member_out.jsp" class="btn btn-outline-warning">회원탈퇴</a>
 					</div>
+					
+					<!-- 회원목록보기 링크를 만들어주세요. -->
+					<a href="user_list2.jsp">회원목록</a>
 				</body>
 				</html>
 			<%

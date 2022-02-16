@@ -40,12 +40,18 @@
 	// close() 로 자원회수하는 것을 try블럭 내부에 작성해두면
 	// 평상시에는 상관없지만 모종의 이유로 에러가 발생했을 때 자원회수를 못 할 수도 있습니다.
 	// 그래서 finally 내부에 넣어줘야 합니다.
+/* 	con.close();
+	pstmt.close();
+	rs.close(); */
 
 	} catch(Exception e){
 		e.printStackTrace();		
 	} finally{
 		// finally는 try와 블럭(지역)이 다르기 때문에
 		// try 진입 전에 미리 선언해둬야 아래와 같이 .close() 구문을 적어둘 수 있습니다.
+		
+		// 문제는 현재 이 구문에서는 rs.next()가 rs.close()를 한 이후에 배치되어 있어서
+		// 에러가 발생합니다.
 		con.close();
 		pstmt.close();
 		rs.close();

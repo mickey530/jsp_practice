@@ -1,3 +1,9 @@
+<%@page import="kr.co.ict.UserDAO"%>
+<%@page import="kr.co.ict.UserVO"%>
+<%@page import="java.sql.*"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -8,6 +14,68 @@
 	// 이를 VO(Value Object)라고 부릅니다.
 	// VO는 클래스이기 때문에 src/main/java에 클래스를 선언 및 정의합니다.
 	// UserVO.class를 만들어보겠습니다.
+	
+	// =================================================================//
+/* 	// 1. DB접속 변수 생성
+	String dbType = "com.mysql.cj.jdbc.Driver";
+	String dbUrl = "jdbc:mysql://localhost:3306/jdbcprac1";
+	String dbId = "root"; // mysql 아이디
+	String dbPw = "11111111"; // mysql 비밀번호
+	
+	ResultSet rs = null; 
+	Connection con = null;
+	PreparedStatement pstmt = null;
+
+	// ArrayList<UserVO> 자료형을 이용해 한 줄 한 줄 단위로 여러 row를 저장합니다.
+	List<UserVO> userList = new ArrayList<>();
+	// 2. 연결
+		try{
+			Class.forName(dbType);
+			con = DriverManager.getConnection(dbUrl, dbId, dbPw);
+			
+		// 3 SELECT * FROM userinfo 실행 및 ResultSet에 저장
+		String getInfo = "SELECT * FROM userinfo";
+		pstmt = con.prepareStatement(getInfo);
+		rs = pstmt.executeQuery();
+		
+		//
+		
+ 		while(rs.next()){
+			// 1. ResultSet에서 데이터 가져오기
+			String uName = rs.getString("uname");
+			String uId = rs.getString("uid");
+			String uPw = rs.getString("upw");
+			String uEmail = rs.getString("uemail");
+			
+			// 클래스 이름이 같더라도 오버라이딩 되기 때문에 구분 가능
+			UserVO userData = new UserVO(uName, uId, uPw, uEmail);
+			userList.add(userData);
+		}
+		// System.out.println(userList);
+		// out.println(userList + "<br/>");
+			
+			
+		} catch(Exception e){
+			e.printStackTrace();		
+		} finally{
+			con.close();
+			pstmt.close();
+			rs.close();
+		} */
+	// =================================================================//
+	
+	// 모든 접속정보는 UserDAO 클래스 내에 있습니다.
+	// 따라서 UserDAO를 생성하는 것으로 접속정보 설정이 끝납니다.
+	// UserDAO 생성
+	UserDAO dao = new UserDAO();
+	
+	// dao 내부에 userinfo 테이블 전체의 데이터를 가져오는
+	// getAllUserList()를 호출하는 것으로 필요 데이터 적재가 끝납니다.
+	
+	// UserDAO의 리턴자료(userList)를
+	// List<UserVO> 자료형 변수(userList)에 대입
+	List<UserVO> userList = dao.getAllUserList();
+
 %>
 <!DOCTYPE html>
 <html>
@@ -16,6 +84,24 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<!-- 향상된 for문을 이용해서 userList 내부의 데이터를
+	Table의 형태로 user_list1 과 동일한 양식으로 화면에 출력해주세요. -->
+		<table border="black">
+			<tr>
+				<th>이름</th>
+				<th>아이디</th>
+				<th>비밀번호</th>
+				<th>이메일</th>
+			</tr>
+		<% for(UserVO s : userList){ %>
+			<tr>
+				<td><%= s.getuName() %></td>
+				<td><%= s.getuId() %></td>
+				<td><%= s.getuPw() %></td>
+				<td><%= s.getuEmail() %></td>
+			</tr>
+			
+		<% } %>
+		</table>
 </body>
 </html>
