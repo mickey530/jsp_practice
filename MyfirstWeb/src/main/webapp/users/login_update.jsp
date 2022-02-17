@@ -1,3 +1,5 @@
+<%@page import="kr.co.ict.UserVO"%>
+<%@page import="kr.co.ict.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>    
@@ -16,7 +18,8 @@
 		response.sendRedirect("login_form.jsp");
 	}
 
-	try {
+	//=====================================================================//
+/* 	try {
 		// DB 연결을 위한 변수선언
 		String dbType = "com.mysql.cj.jdbc.Driver";
 		String dbUrl = "jdbc:mysql://localhost:3306/jdbcprac1";
@@ -50,7 +53,16 @@
 		e.printStackTrace();
 	} finally{
 		
-	}
+	} */
+	//=====================================================================//
+	
+	// 1. DAO 생성
+	UserDAO dao = new UserDAO();
+	// 2. DAO 내부에서 회원 1명의 정보만 가져오는 getUserData 호출
+	UserVO userInfo = dao.getUserData(sessionId);
+	// 3. 얻어온 userInfo 내용물 확인
+	System.out.println(userInfo);
+	// 4. user 내용물을 아래쪽 표현식에 getter로 집어넣어주기
 %>
 
 <!DOCTYPE html>
@@ -101,12 +113,14 @@
 				<input type="password" name="pw" placeholder="비밀번호" class="form-control" id="floatingInput"  required><br/>
 				<label for="floatingInput">비밀번호</label>
 			</div>
+			
 			<div class="form-floating">
-				<input type="text" name="name" placeholder="이름" class="form-control" id="floatingInput" value="<%= uname %>" required><br/>
+				<input type="text" name="name" placeholder="이름" class="form-control" id="floatingInput" value="<%= userInfo.getuName() %>" required><br/>
 				<label for="floatingInput">이름</label>
 			</div>
+			
 			<div class="form-floating">
-				<input type="text" name="email" placeholder="이메일" class="form-control" id="floatingInput" value="<%= uemail %>" ><br/>
+				<input type="text" name="email" placeholder="이메일" class="form-control" id="floatingInput" value="<%= userInfo.getuEmail() %>" ><br/>
 				<label for="floatingInput">이메일</label>
 			</div>
 		

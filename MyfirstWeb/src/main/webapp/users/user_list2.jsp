@@ -82,17 +82,24 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- 미디어 쿼리 -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 부트스트랩 링크 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
 	<!-- 향상된 for문을 이용해서 userList 내부의 데이터를
 	Table의 형태로 user_list1 과 동일한 양식으로 화면에 출력해주세요. -->
-		<table border="black">
+		<table class="table table-striped table-hover">
+		<thead>
 			<tr>
-				<th>이름</th>
-				<th>아이디</th>
-				<th>비밀번호</th>
-				<th>이메일</th>
+				<th scope="col">이름</th>
+				<th scope="col">아이디</th>
+				<th scope="col">비밀번호</th>
+				<th scope="col">이메일</th>
 			</tr>
+		</thead>
+		<tbody>
 		<% for(UserVO s : userList){ %>
 			<tr>
 				<td><%= s.getuName() %></td>
@@ -102,6 +109,7 @@
 			</tr>
 			
 		<% } %>
+		</tbody>
 		</table>
 </body>
 </html>
