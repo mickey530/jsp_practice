@@ -57,7 +57,7 @@
 	//=====================================================================//
 	
 	// 1. DAO 생성
-	UserDAO dao = new UserDAO();
+	UserDAO dao = UserDAO.getInstance();
 	// 2. DAO 내부에서 회원 1명의 정보만 가져오는 getUserData 호출
 	UserVO userInfo = dao.getUserData(sessionId);
 	// 3. 얻어온 userInfo 내용물 확인

@@ -1,3 +1,4 @@
+<%@page import="kr.co.ict.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
@@ -15,8 +16,8 @@
 	if(sessionId == null){
 		response.sendRedirect("login_form.jsp");
 	}
-
-	// DB 연결용 변수선언
+	//================================================================//
+	/* // DB 연결용 변수선언
 	String dbType = "com.mysql.cj.jdbc.Driver";
 	String dbUrl = "jdbc:mysql://localhost:3306/jdbcprac1";
 	String dbId = "root";
@@ -48,8 +49,15 @@
 	} finally{
 		// 세션까지 삭제하기
 		session.invalidate();	
-	}
-
+	} */
+	//================================================================//
+	
+	UserDAO dao = UserDAO.getInstance();
+	dao.deleteUser(sessionId);
+	
+	// 처음에 이거 빠트려서 db에서는 삭제되었지만 세션에 남아있어서 
+	// 페이지들이 안뜨는 오류가 발생했음. 일단 JSESSOIONID 쿠키를 삭제해서 세션연결 끊음.
+	session.invalidate(); 
 	
 	
 %>

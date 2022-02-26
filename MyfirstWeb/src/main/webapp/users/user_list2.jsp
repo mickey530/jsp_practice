@@ -67,7 +67,7 @@
 	// 모든 접속정보는 UserDAO 클래스 내에 있습니다.
 	// 따라서 UserDAO를 생성하는 것으로 접속정보 설정이 끝납니다.
 	// UserDAO 생성
-	UserDAO dao = new UserDAO();
+	UserDAO dao = UserDAO.getInstance();
 	
 	// dao 내부에 userinfo 테이블 전체의 데이터를 가져오는
 	// getAllUserList()를 호출하는 것으로 필요 데이터 적재가 끝납니다.
@@ -87,7 +87,7 @@
 <!-- 부트스트랩 링크 -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
-<body>
+<body class="text-center" style="margin:20px;">
 	<!-- 향상된 for문을 이용해서 userList 내부의 데이터를
 	Table의 형태로 user_list1 과 동일한 양식으로 화면에 출력해주세요. -->
 		<table class="table table-striped table-hover">
