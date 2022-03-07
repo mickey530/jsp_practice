@@ -152,6 +152,17 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
+  <Resource
+    	auth="Container"
+    	driverClassName = "com.mysql.cj.jdbc.Driver"
+    	url = "jdbc:mysql://localhost:3306/jdbcprac1"
+    	username = "root" 
+    	password = "11111111"
+    	name = "jdbc/mysql"
+    	type = "javax.sql.DataSource"
+    	maxActive = "300"
+    	maxWait = "1000"
+    />
       <Context docBase="JSPBasic" path="/JSPBasic" reloadable="true" source="org.eclipse.jst.jee.server:JSPBasic"/><Context docBase="JDBCPrj" path="/JDBCPrj" reloadable="true" source="org.eclipse.jst.jee.server:JDBCPrj"/><Context docBase="MyfirstWeb" path="/MyfirstWeb" reloadable="true" source="org.eclipse.jst.jee.server:MyfirstWeb"/></Host>
     </Engine>
   </Service>
