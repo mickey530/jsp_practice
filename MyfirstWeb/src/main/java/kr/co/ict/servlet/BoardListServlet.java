@@ -16,7 +16,7 @@ import kr.co.ict.BoardVO;
 /**
  * Servlet implementation class BoardListServlet
  */
-@WebServlet("/BoardListServlet")
+@WebServlet("/BoardList") // 주소창에 나타나는 주소
 public class BoardListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -43,7 +43,7 @@ public class BoardListServlet extends HttpServlet {
 		request.setAttribute("boardList", boardList);
 		
 		// 4. /board/boardlist.jsp 로 포워딩하기
-		RequestDispatcher dp = request.getRequestDispatcher("/board/boardlist.jsp");
+		RequestDispatcher dp = request.getRequestDispatcher("/board/boardlist.jsp"); // 보내는 주소
 		dp.forward(request, response);
 	}
 

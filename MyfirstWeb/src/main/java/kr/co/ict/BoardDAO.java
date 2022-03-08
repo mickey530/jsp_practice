@@ -111,6 +111,46 @@ public class BoardDAO {
 			}
 		}	
 	}
-
+	
+	// 글 한개가 필요한 상황이므로 BoardVO 하나면 처리 가능
+	// SELECT * FROM boardTbl WHERE board_num = ?
+	public BoardVO getBoardDetail(int bNum) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		BoardVO boardData = null;
+		
+		try {
+			con = ds.getConnection();
+			String getInfo = "SELECT * FROM boardTbl WHERE board_num = ?";
+			pstmt = con.prepareStatement(getInfo);
+			pstmt.setInt(1, bNum);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				int board_num = rs.getInt("board_num");
+				String title = rs.getString("title");
+				String content = rs.getString("content");
+				String writer = rs.getString("writer");
+				Date bdate = rs.getDate("bdate");
+				Date mdate = rs.getDate("mdate");
+				int hit = rs.getInt("hit");
+				boardData = new BoardVO(board_num, title, content, writer, bdate, mdate, hit);
+			}
+			
+		} catch(Exception e){
+			e.printStackTrace();		
+		} finally{
+			
+			try {
+				con.close();
+				pstmt.close();
+			} catch(SQLException se) {
+				se.printStackTrace();		
+			}
+		
+		}
+		return boardData;
+	}
 	
 }

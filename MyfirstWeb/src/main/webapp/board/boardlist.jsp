@@ -10,6 +10,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<style>
+	a{text-decoration:none; color:black;}
+	thead, tbody{text-align: center;}
+	.title {text-align: left;}
+</style>
 </head>
 <body>
 	<!-- 출력방법 : 인덱싱이나 c:forEach를 이용해서 하나하나 꺼내준 다음
@@ -21,19 +26,19 @@
       <th scope="col">#</th>
       <th scope="col">제목</th>
       <th scope="col">저자</th>
-      <th scope="col">게시일</th>
+      <th scope="col"">게시일</th>
       <th scope="col">조회수</th>
     </tr>
   </thead>
   <tbody>
 	<c:forEach var="i" items="${boardList }">
-		<tr>
-			<td>${i.board_num}</td>
-			<td>${i.title}</td>
-			<td>${i.writer}</td>
-			<td>${i.bdate}</td>
-			<td>${i.hit}</td>
-	    </tr>
+			<tr>
+				<td>${i.board_num}</td>
+				<td class="title"><a href="http://localhost:8181/MyfirstWeb/boarddetail?board_num=${i.board_num}">${i.title}</a></td>
+				<td>${i.writer}</td>
+				<td>${i.bdate}</td>
+				<td>${i.hit}</td>
+	    	</tr>
 	</c:forEach>
   </tbody>
 </table>

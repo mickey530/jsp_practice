@@ -8,10 +8,11 @@
 </head>
 <body>
 	<form action="http://localhost:8181/MyfirstWeb/insertBoard" method="post">
-		<input type="text" name="title" placeholder="제목"><br/>
-		<textarea name="content" placeholder="내용을 입력해주세요"></textarea><br/>
-		<input type="text" name="writer" placeholder="저자"><br/>
-		<input type="submit" value="등록">
+		<!-- fool-proof, idiot-proof -->
+		<input type="text" name="title" placeholder="제목" required><br/>
+		<input type="text" name="writer" placeholder="저자" required><br/>
+		<textarea name="content" placeholder="내용을 입력해주세요" cols="60" rows="30" required></textarea><br/>
+		<input type="submit" value="글쓰기">
 	</form>
 </body>
 </html>
