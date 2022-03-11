@@ -34,5 +34,13 @@
 수정일 : ${boardData.mdate}<br/>
 <textarea rows="15" cols="50">${boardData.content}</textarea><br/>
 <a href="http://localhost:8181/MyfirstWeb/BoardList">목록으로</a>
+<form action="http://localhost:8181/MyfirstWeb/boardUpdateForm" method="post">
+	<input type="hidden" name="board_num" value="${boardData.board_num}">
+	<input type="submit" value="게시물 수정">
+</form>
+<form action="http://localhost:8181/MyfirstWeb/boardDelete" method="post">
+	<input type="hidden" name="board_num" value="${boardData.board_num}">
+	<input type="submit" value="게시물 삭제">
+</form>
 </body>
 </html>

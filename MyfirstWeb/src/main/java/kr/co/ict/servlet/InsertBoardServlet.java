@@ -43,7 +43,7 @@ public class InsertBoardServlet extends HttpServlet {
 		
 		
 		// 다 끝났다면, 리다이렉트 방식으로 서블릿 주소 Boardlist로 이동시킵니다.
-		response.sendRedirect("http://localhost:8181/MyfirstWeb/BoardListServlet");
+		response.sendRedirect("http://localhost:8181/MyfirstWeb/BoardList");
 		
 	}
 

@@ -42,13 +42,16 @@
 	</c:forEach>
   </tbody>
 </table>
+<form action="http://localhost:8181/MyfirstWeb/boardInsertForm" method="get">
+	<input type="submit" value="게시글 작성" class="btn btn-light">
+</form>
 
-	
+<%-- 	
 	0번째 요소 : ${boardList[0] }<br/>
 	1번째 요소 : ${boardList[1] }<br/>
 	2번째 요소 : ${boardList[2] }<br/>
 	<hr/>
 	글 번호 : ${boardList[0].board_num }<br/>
-	글 제목 : ${boardList[0].title }
+	글 제목 : ${boardList[0].title } --%>
 </body>
 </html>
