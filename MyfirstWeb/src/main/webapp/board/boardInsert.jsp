@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="http://localhost:8181/MyfirstWeb/insertBoard" method="post">
+	<form action="http://localhost:8181/MyfirstWeb/insertBoard.do"" method="post">
 		<!-- fool-proof, idiot-proof -->
 		<input type="text" name="title" placeholder="제목" required><br/>
 		<input type="text" name="writer" placeholder="저자" required><br/>

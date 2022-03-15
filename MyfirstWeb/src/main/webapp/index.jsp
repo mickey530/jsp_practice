@@ -13,6 +13,6 @@
 	<h2>여러분이 welcomepage 설정을 고쳐서 index.jsp가 아닌</h2>
 	<h2>다른 임의의 명칭을 메인페이지로 만들어 줄 수도 있습니다.</h2>
 	
-	<a href="http://localhost:8181/MyfirstWeb/BoardList">게시판 드가자~</a>
+	<a href="http://localhost:8181/MyfirstWeb/boardList.do">게시판 드가자~</a>
 </body>
 </html>

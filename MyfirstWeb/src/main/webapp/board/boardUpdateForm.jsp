@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<form action="http://localhost:8181/MyfirstWeb/boardUpdate" method="post">
+<form action="http://localhost:8181/MyfirstWeb/boardUpdate.do" method="post">
 	제목 : <input type="text" name="title" value="${boardData.title}">
 	작성자 : <input type="text" value="${boardData.writer}" readonly><br/>
 	작성일 : ${boardData.bdate} |
