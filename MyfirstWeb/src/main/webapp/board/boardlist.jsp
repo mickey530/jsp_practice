@@ -42,9 +42,11 @@
 	</c:forEach>
   </tbody>
 </table>
+<c:if test="${sId ne null }">
 <form action="http://localhost:8181/MyfirstWeb/insertForm.do" method="get">
 	<input type="submit" value="게시글 작성" class="btn btn-light">
 </form>
+</c:if>
 
 <%-- 	
 	0번째 요소 : ${boardList[0] }<br/>

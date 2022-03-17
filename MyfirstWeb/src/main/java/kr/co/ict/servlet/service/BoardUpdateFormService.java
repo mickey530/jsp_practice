@@ -10,7 +10,11 @@ public class BoardUpdateFormService implements IBoardService{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		int bNum = Integer.parseInt(request.getParameter("board_num"));
+		String strbNum = request.getParameter("board_num");
+		int bNum = 0;
+		if(strbNum != null) {
+			bNum = Integer.parseInt(strbNum);
+		}
 		
 		BoardDAO dao = BoardDAO.getInstance();
 		BoardVO boardData = dao.getBoardDetail(bNum);

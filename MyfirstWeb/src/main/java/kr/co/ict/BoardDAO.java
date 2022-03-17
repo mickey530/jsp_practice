@@ -136,6 +136,7 @@ public class BoardDAO {
 				Date mdate = rs.getDate("mdate");
 				int hit = rs.getInt("hit");
 				boardData = new BoardVO(board_num, title, content, writer, bdate, mdate, hit);
+				upHit(board_num);
 			}
 			
 		} catch(Exception e){
@@ -205,5 +206,10 @@ public class BoardDAO {
 				se.printStackTrace();		
 			}
 		}	
+	}
+	private void upHit(int bId) {
+		String sql = "UPDATE boardTbl SET hit = (hit+1) WHERE board_num=?";
+		
+		System.out.println("현재 조회된 글 번호 : " + bId);
 	}
 }

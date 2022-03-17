@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+	// 스크립트릿을 활용한 로그인 확인
+	String sId = (String)session.getAttribute("userId");
+	// 로그인 안 된 사용자의 sId 체크
+	System.out.println(sId);
+%>
+<c:set var="sId"><%= sId %></c:set>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,5 +22,13 @@
 	<h2>다른 임의의 명칭을 메인페이지로 만들어 줄 수도 있습니다.</h2>
 	
 	<a href="http://localhost:8181/MyfirstWeb/boardList.do">게시판 드가자~</a>
+	<c:if test="${sessionScope.userId eq null }">
+		<a href="http://localhost:8181/MyfirstWeb/users/login_form.jsp">로그인</a>
+		<a href="http://localhost:8181/MyfirstWeb/users/join_form.jsp">회원가입</a>
+	</c:if>
+	<c:if test="${sessionScope.userId ne null }">
+		<a href="http://localhost:8181/MyfirstWeb/users/logout.jsp">로그아웃</a>
+	</c:if>
+	
 </body>
 </html>

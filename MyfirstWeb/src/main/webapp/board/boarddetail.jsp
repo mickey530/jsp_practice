@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,13 +35,19 @@
 수정일 : ${boardData.mdate}<br/>
 <textarea rows="15" cols="50">${boardData.content}</textarea><br/>
 <a href="http://localhost:8181/MyfirstWeb/boardList.do">목록으로</a>
-<form action="http://localhost:8181/MyfirstWeb/boardUpdateForm.do" method="post">
-	<input type="hidden" name="board_num" value="${boardData.board_num}">
-	<input type="submit" value="게시물 수정">
-</form>
-<form action="http://localhost:8181/MyfirstWeb/boardDelete.do" method="post">
-	<input type="hidden" name="board_num" value="${boardData.board_num}">
-	<input type="submit" value="게시물 삭제">
-</form>
+
+<c:if test="${sessionScope.userId eq boardData.writer }">
+	<form action="http://localhost:8181/MyfirstWeb/boardUpdateForm.do" method="post">
+		<input type="hidden" name="writer" value="${boardData.writer}">
+		<input type="hidden" name="board_num" value="${boardData.board_num}">
+		<input type="submit" value="게시물 수정">
+	</form>
+	<form action="http://localhost:8181/MyfirstWeb/boardDelete.do" method="post">
+		<input type="hidden" name="writer" value="${boardData.writer}">
+		<input type="hidden" name="board_num" value="${boardData.board_num}">
+		<input type="submit" value="게시물 삭제">
+	</form>
+</c:if>
+
 </body>
 </html>
