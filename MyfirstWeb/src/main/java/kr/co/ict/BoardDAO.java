@@ -41,17 +41,19 @@ public class BoardDAO {
 	// 3-2.
 	
 	// 3-3. while문 내부에서 BoardVO 세팅이 가능하도록 RSDP서 데이터 가져오는 부분을 수정합니다.
-
-	public List<BoardVO> getAllBoardList(){
+	
+	// 페이징 처리를 위해 페이지 번호를 추가로 입력받습니다.
+	public List<BoardVO> getAllBoardList(int pageNum){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;	
 		List<BoardVO> BoardList = new ArrayList<>();
-		
+		int limitNum = ((pageNum-1)*10);
 		try {
 			con = ds.getConnection();
-			String getInfo = "SELECT * FROM boardTbl ORDER BY board_num DESC";
+			String getInfo = "SELECT * FROM boardTbl ORDER BY board_num DESC limit ?, 10";
 			pstmt = con.prepareStatement(getInfo);
+			pstmt.setInt(1, limitNum);
 			rs = pstmt.executeQuery();		
 
 			while(rs.next()) {
@@ -126,6 +128,7 @@ public class BoardDAO {
 			pstmt = con.prepareStatement(getInfo);
 			pstmt.setInt(1, bNum);
 			rs = pstmt.executeQuery();
+			upHit(bNum); // 조회수 올리는 로직을 실행한 다음 글 정보 불러오게 처리
 			
 			if(rs.next()) {
 				int board_num = rs.getInt("board_num");
@@ -136,7 +139,6 @@ public class BoardDAO {
 				Date mdate = rs.getDate("mdate");
 				int hit = rs.getInt("hit");
 				boardData = new BoardVO(board_num, title, content, writer, bdate, mdate, hit);
-				upHit(board_num);
 			}
 			
 		} catch(Exception e){
@@ -207,9 +209,29 @@ public class BoardDAO {
 			}
 		}	
 	}
+	// public 으로 걸어서 서브릿에서 그냥 호출해도 됨
 	private void upHit(int bId) {
-		String sql = "UPDATE boardTbl SET hit = (hit+1) WHERE board_num=?";
+		Connection con = null;
+		PreparedStatement pstmt = null;
 		
-		System.out.println("현재 조회된 글 번호 : " + bId);
+		try {
+			con = ds.getConnection();
+			String sql = "UPDATE boardTbl SET hit = (hit+1) WHERE board_num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, bId);
+			pstmt.executeUpdate();
+			
+		} catch(Exception e){
+			e.printStackTrace();		
+		} finally{
+			
+			try {
+				con.close();
+				pstmt.close();
+			} catch(SQLException se) {
+				se.printStackTrace();		
+			}
+		}
+		
 	}
 }
