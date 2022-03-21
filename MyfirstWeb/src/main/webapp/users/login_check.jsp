@@ -6,6 +6,7 @@
     
 <%
 	 // form 데이터 변수에 저장
+	request.setCharacterEncoding("utf-8");
 	String inputId = request.getParameter("id");
 	String inputPw = request.getParameter("pw");
 	

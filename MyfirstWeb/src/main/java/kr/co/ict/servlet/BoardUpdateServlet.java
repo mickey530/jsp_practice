@@ -30,7 +30,7 @@ public class BoardUpdateServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. BoardDAO에 updateBoard() 메서드를 생성해주세요.
 		// 2. 1의 메서드에 들어갈 쿼리문은 아래와 같습니다.
 		// UPDATE FROM boardTbl SET title=?, content=? WHERE board_num = ?

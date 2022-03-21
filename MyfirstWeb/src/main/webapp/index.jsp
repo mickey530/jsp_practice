@@ -12,23 +12,39 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<title>메인페이지</title>
+<style>
+	html, body {height:100%;}
+	.container{
+		height: relative;
+		min-height:100%;
+		
+	}
+</style>
 </head>
 <body>
-	<h1>안녕하세요 메인페이지입니다</h1>
-	<h2>web.xml 내부 welcomepage 설정에 index.jsp라고 적혀있어서</h2>
-	<h2>이 페이지가 메인 페이지로 자동 설정됩니다.</h2>
-	<h2>여러분이 welcomepage 설정을 고쳐서 index.jsp가 아닌</h2>
-	<h2>다른 임의의 명칭을 메인페이지로 만들어 줄 수도 있습니다.</h2>
-	
-	<a href="http://localhost:8181/MyfirstWeb/boardList.do">게시판 드가자~</a>
-	<c:if test="${sessionScope.userId eq null }">
-		<a href="http://localhost:8181/MyfirstWeb/users/login_form.jsp">로그인</a>
-		<a href="http://localhost:8181/MyfirstWeb/users/join_form.jsp">회원가입</a>
-	</c:if>
-	<c:if test="${sessionScope.userId ne null }">
-		<a href="http://localhost:8181/MyfirstWeb/users/logout.jsp">로그아웃</a>
-	</c:if>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+		<h1>안녕하세요 메인페이지입니다</h1>
+		<h2>web.xml 내부 welcomepage 설정에 index.jsp라고 적혀있어서</h2>
+		<h2>이 페이지가 메인 페이지로 자동 설정됩니다.</h2>
+		<h2>여러분이 welcomepage 설정을 고쳐서 index.jsp가 아닌</h2>
+		<h2>다른 임의의 명칭을 메인페이지로 만들어 줄 수도 있습니다.</h2>
+		
+		<a href="http://localhost:8181/MyfirstWeb/boardList.do">게시판 드가자~</a>
+		<c:if test="${sessionScope.userId eq null }">
+			<a href="http://localhost:8181/MyfirstWeb/users/login_form.jsp">로그인</a>
+			<a href="http://localhost:8181/MyfirstWeb/users/join_form.jsp">회원가입</a>
+		</c:if>
+		<c:if test="${sessionScope.userId ne null }">
+			<a href="http://localhost:8181/MyfirstWeb/users/logout.jsp">로그아웃</a>
+		</c:if>
+    </div>
+  </div>
+</div>
 	
 </body>
 </html>

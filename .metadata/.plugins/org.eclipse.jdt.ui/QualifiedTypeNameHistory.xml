@@ -27,10 +27,12 @@
     <fullyQualifiedTypeName name="kr.co.ict.servlet.service.BoardUpdateFormService"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
     <fullyQualifiedTypeName name="kr.co.ict.servlet.service.IBoardService"/>
-    <fullyQualifiedTypeName name="com.mysql.cj.Session"/>
     <fullyQualifiedTypeName name="kr.co.ict.servlet.service.BoardInsertFormService"/>
     <fullyQualifiedTypeName name="javax.servlet.ServletException"/>
     <fullyQualifiedTypeName name="java.io.IOException"/>
     <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="kr.co.ict.UserDAO"/>
+    <fullyQualifiedTypeName name="com.mysql.cj.Session"/>
+    <fullyQualifiedTypeName name="kr.co.ict.BoardDTO"/>
 </qualifiedTypeNameHistroy>

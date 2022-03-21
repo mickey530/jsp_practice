@@ -2,9 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <!-- 여기에 세션 아이디랑 글쓴이 아이디를 비교해서 일치하지 않으면 boardList.do로 리다이렉트 시키는 로직을 작성해주세요. -->
-<c:if test="${sessionScope.userId ne boardData.writer }">
+<%-- <c:if test="${sessionScope.userId ne boardData.writer }">
 	<% response.sendRedirect("http://localhost:8181/MyfirstWeb/boardList.do"); %>
-</c:if>
+</c:if> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<form action="http://localhost:8181/MyfirstWeb/boardUpdate.do" method="post">
+<form action="http://localhost:8181/MyfirstWeb/boardUpdate" method="get">
 	제목 : <input type="text" name="title" value="${boardData.title}">
 	작성자 : <input type="text" value="${boardData.writer}" readonly><br/>
 	작성일 : ${boardData.bdate} |

@@ -42,6 +42,9 @@
 	</c:forEach>
   </tbody>
 </table>
+${dto}
+
+
 <c:if test="${sId ne null }">
 <form action="http://localhost:8181/MyfirstWeb/insertForm.do" method="get">
 	<input type="submit" value="게시글 작성" class="btn btn-light">
