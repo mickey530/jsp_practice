@@ -42,7 +42,8 @@
 	</c:forEach>
   </tbody>
 </table>
-${dto}
+
+
 
 
 <c:if test="${sId ne null }">
@@ -58,5 +59,43 @@ ${dto}
 	<hr/>
 	글 번호 : ${boardList[0].board_num }<br/>
 	글 제목 : ${boardList[0].title } --%>
+	
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item ${dto.currentPage eq 1 ? 'disabled' : '' }">
+    	<a class="page-link" href="http://localhost:8181/MyfirstWeb/boardList.do?pageNum=${dto.currentPage - 1 }" aria-label="Previous">
+    		<span aria-hidden="true">&laquo;</span>
+		</a>      
+    </li>
+    <c:forEach var="pageIndex" begin="${dto.startPage }" end="${dto.endPage }" >
+        <li class="page-item ${dto.currentPage eq pageIndex ? 'active' : '' }"><a class="page-link" href="http://localhost:8181/MyfirstWeb/boardList.do?pageNum=${pageIndex}">${pageIndex}</a></li>
+    </c:forEach>
+    <li class="page-item ${dto.currentPage eq dto.totalPages ? 'disabled' : '' }">
+      <a class="page-link" href="http://localhost:8181/MyfirstWeb/boardList.do?pageNum=${dto.currentPage + 1 }" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+	<hr/>
+	<h3>노 부트스트랩</h3>
+	<c:if test="${dto.startPage ne 1 }">
+    <a href="http://localhost:8181/MyfirstWeb/boardList.do?pageNum=${dto.startPage - 1 }">&lt;</a>      
+	</c:if>
+	
+    <c:forEach var="pageIndex" begin="${dto.startPage }" end="${dto.endPage }" >
+    	<c:if test="${dto.currentPage eq pageIndex }">
+    		<a style="font-weight:bold" href="http://localhost:8181/MyfirstWeb/boardList.do?pageNum=${pageIndex}">[${pageIndex }]</a>
+    	</c:if>
+    	<c:if test="${dto.currentPage ne pageIndex }">
+			<a href="http://localhost:8181/MyfirstWeb/boardList.do?pageNum=${pageIndex}">[${pageIndex }]</a>
+    	</c:if>
+	</c:forEach>
+	
+	<c:if test="${dto.endPage ne dto.totalPages }">
+		<a href="http://localhost:8181/MyfirstWeb/boardList.do?pageNum=${dto.endPage + 1 }">&gt;</a>	
+	</c:if>
+	<br/>		
+	${dto}
 </body>
 </html>

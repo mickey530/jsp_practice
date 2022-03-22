@@ -12,8 +12,8 @@ public class BoardDTO {
 	private int totalPages; // 전체 페이지 개수
 	private int startPage; // 시작 페이지 번호
 	private int endPage; // 끝 페이지 번호
-	private static final int NAV_NUM = 5; // 페이지 하단 네비게이션 버튼 표시
-	private static final int BOARD_NUM = 20; // 페이지 당 표시되는 게시글 개수 (DAO의 limit 구문도 함께 수정해야 함)
+	private static final int NAV_NUM = 10; // 페이지 하단 네비게이션 버튼 표시
+	private static final int BOARD_NUM = 10; // 페이지 당 표시되는 게시글 개수 (DAO의 limit 구문도 함께 수정해야 함)
 	
 	// 생성자 생성시 자동으로 모든 정보를 구하도록 처리
 	public BoardDTO(int boardCount, int currentPage) {
@@ -88,6 +88,12 @@ public class BoardDTO {
 	// 해당 그룹의 끝 페이지
 	public int getEndPage() {
 		return endPage;
+	}
+	
+	// 현재 페이지
+	// ${dto.currentPage}와 같은 형태로 자료를 EL문법으로 얻어와 활용하기 위해 getter가 필요합니다.
+	public int getCurrentPage() {
+		return currentPage;
 	}
 
 	@Override
